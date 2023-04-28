@@ -102,6 +102,9 @@
         color: var(--dl-color-gray-black);
         background-color: var(--dl-color-gray-white);
       }
+      textarea {
+        resize: none;
+      }
     </style>
     <link
       rel="shortcut icon"
@@ -230,6 +233,26 @@
                         class="home-dropdown-toggle06"
                       >
                         <span class="home-text05">Question Answering</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li data-thq="thq-dropdown" class="home-dropdown list-item">
+                    <a href="#esgExtraction">
+                      <div
+                        data-thq="thq-dropdown-toggle"
+                        class="home-dropdown-toggle01"
+                      >
+                        <span class="home-text">ESG Labelling</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li data-thq="thq-dropdown" class="home-dropdown list-item">
+                    <a href="#identifyIndustry">
+                      <div
+                        data-thq="thq-dropdown-toggle"
+                        class="home-dropdown-toggle01"
+                      >
+                        <span class="home-text">Industry Identification</span>
                       </div>
                     </a>
                   </li>
@@ -1089,7 +1112,7 @@
               <p class="home-text32" id="esgResult"></p>
             </div>
           </div>
-          <div id="industry" class="home-industry-labelling">
+          <div id="identifyIndustry" class="home-industry-labelling">
             <div class="home-top-bar05">
               <a href="#home" class="home-link26">
                 <div class="home-back-top05 button">
@@ -1351,7 +1374,6 @@
                 placeholder="Enter the date here in the format YYYY-MM-DD strictly."
                 class="home-textarea6 textarea"
                 type="date"
-                value="2023-04-22"
                 min="2023-04-21"
                 max="2023-06-24"
               />
@@ -1621,8 +1643,7 @@
               <div class="home-heading2">
                 <h2 class="home-header13">Get Started with MindsDB Now!</h2>
                 <strong class="home-text70">
-                  Enjoy the free trial for 30 days and then free forever service
-                  with 4K allowed data rows.&nbsp;
+                  Enjoy free forever service with 10K allowed data rows.&nbsp;
                 </strong>
               </div>
               <a
