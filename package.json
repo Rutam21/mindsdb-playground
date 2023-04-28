@@ -1,0 +1,21 @@
+{
+  "name": "mindsdb-playground",
+  "version": "1.0.0",
+  "description": "This is the project folder for MindsDB Playground App.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "test"
+  },
+  "author": "Rutam Prita Mishra",
+  "license": "Apache License 2.0",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dangerous-html": "^0.1.13",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mindsdb-js-sdk": "^2.2.0",
+    "parcel-bundler": "^1.8.1",
+    "winston": "^3.8.2"
+  }
+}

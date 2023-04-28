@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MindsDB Playground</title>
+    <meta property="og:title" content="MindsDB Playground" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+      }
+    </style>
+    <link
+      rel="shortcut icon"
+      href="./asset/highqlogo.png"
+      type="icon/png"
+      sizes="32x32"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&amp;display=swap"
+      data-tag="font"
+    />
+    <!--This is the head section-->
+    <!-- <style> ... </style> -->
+    <style data-section-id="dropdown">
+      [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
+        display: flex;
+      }
+
+      [data-thq="thq-dropdown"]:hover > div [data-thq="thq-dropdown-arrow"] {
+        transform: rotate(90deg);
+      }
+    </style>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <div id="loading-screen">
+      <div id="loading-spinner"></div>
+      <p id="loading-text">
+        Our models are processing your request...Hang Tight!
+      </p>
+    </div>
+    <div>
+      <link href="./styles/home.css" rel="stylesheet" />
+
+      <div id="home" class="home-container">
+        <header data-thq="thq-navbar" class="home-navbar">
+          <span class="home-logo">MindsDB Playground</span>
+          <div
+            data-thq="thq-navbar-nav"
+            data-role="Nav"
+            class="home-desktop-menu"
+          >
+            <nav
+              data-thq="thq-navbar-nav-links"
+              data-role="Nav"
+              class="home-nav"
+            >
+              <div data-thq="thq-dropdown" class="home-nlp list-item">
+                <div
+                  data-thq="thq-dropdown-toggle"
+                  class="home-dropdown-toggle"
+                >
+                  <a href="#nlp" class="home-link">NLP</a>
+                  <div
+                    data-thq="thq-dropdown-arrow"
+                    class="home-dropdown-arrow"
+                  >
+                    <svg viewBox="0 0 1024 1024" class="home-icon">
+                      <path d="M342 214l468 298-468 298v-596z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="home-container01"></div>
+                <div class="home-container02"></div>
+                <ul data-thq="thq-dropdown-list" class="home-dropdown-list">
+                  <li data-thq="thq-dropdown" class="home-dropdown list-item">
+                    <a href="#summarizeText">
+                      <div
+                        data-thq="thq-dropdown-toggle"
+                        class="home-dropdown-toggle01"
+                      >
+                        <span class="home-text">Text Summarization</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li data-thq="thq-dropdown" class="home-dropdown01 list-item">
+                    <a href="#analyzeSentiment">
+                      <div
+                        data-thq="thq-dropdown-toggle"
+                        class="home-dropdown-toggle02"
+                      >
+                        <span class="home-text01">Sentiment Analysis</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li data-thq="thq-dropdown" class="home-dropdown02 list-item">
+                    <a href="#translation">
+                      <div
+                        data-thq="thq-dropdown-toggle"
+                        class="home-dropdown-toggle03"
+                      >
+                        <span class="home-text02">Translations</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li data-thq="thq-dropdown" class="home-dropdown03 list-item">
+                    <a href="#spamDetection">
+                      <div
+                        data-thq="thq-dropdown-toggle"
+                        class="home-dropdown-toggle04"
+                      >
+                        <span class="home-text03">Spam Detection</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li data-thq="thq-dropdown" class="home-dropdown04 list-item">
+                    <a href="#jsonExtraction">
+                      <div
+                        data-thq="thq-dropdown-toggle"
+                        class="home-dropdown-toggle05"
+                      >
+                        <span class="home-text04">JSON Extraction</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li data-thq="thq-dropdown" class="home-dropdown05 list-item">
+                    <a href="#qNa">
+                      <div
+                        data-thq="thq-dropdown-toggle"
+                        class="home-dropdown-toggle06"
+                      >
+                        <span class="home-text05">Question Answering</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div data-thq="thq-dropdown" class="home-predictions list-item">
+                <div
+                  data-thq="thq-dropdown-toggle"
+                  class="home-dropdown-toggle07"
+                >
+                  <a href="#predict" class="home-link07">Predictions</a>
+                  <div
+                    data-thq="thq-dropdown-arrow"
+                    class="home-dropdown-arrow1"
+                  >
+                    <svg viewBox="0 0 1024 1024" class="home-icon02">
+                      <path d="M342 214l468 298-468 298v-596z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="home-container03"></div>
+                <div class="home-container04"></div>
+                <ul data-thq="thq-dropdown-list" class="home-dropdown-list1">
+                  <li data-thq="thq-dropdown" class="home-dropdown06 list-item">
+                    <a href="#predictMobile">
+                      <div
+                        data-thq="thq-dropdown-toggle"
+                        class="home-dropdown-toggle08"
+                      >
+                        <span class="home-text06">Predict Mobile Price</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li data-thq="thq-dropdown" class="home-dropdown07 list-item">
+                    <a href="#forecastETH">
+                      <div
+                        data-thq="thq-dropdown-toggle"
+                        class="home-dropdown-toggle09"
+                      >
+                        <span class="home-text07">Forecast Ethereum Price</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li data-thq="thq-dropdown" class="home-dropdown08 list-item">
+                    <a href="#predictWater">
+                      <div
+                        data-thq="thq-dropdown-toggle"
+                        class="home-dropdown-toggle10"
+                      >
+                        <span class="home-text08">
+                          Predict Water Potability
+                        </span>
+                      </div>
+                    </a>
+                  </li>
+                  <li data-thq="thq-dropdown" class="home-dropdown09 list-item">
+                    <a href="#forecastTesla">
+                      <div
+                        data-thq="thq-dropdown-toggle"
+                        class="home-dropdown-toggle11"
+                      >
+                        <span class="home-text09">
+                          Forecast Tesla Stock Price
+                        </span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <a
+                href="https://docs.mindsdb.com/what-is-mindsdb"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="home-docs button-clean button"
+              >
+                Docs
+              </a>
+              <a
+                href="https://github.com/mindsdb/mindsdb"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="home-github button-clean button"
+              >
+                Github
+              </a>
+              <a
+                href="https://cloud.mindsdb.com/login"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="home-cloud button-clean button"
+              >
+                Cloud
+              </a>
+            </nav>
+          </div>
+          <div data-thq="thq-navbar-btn-group" class="home-btn-group">
+            <div class="home-socials">
+              <a
+                href="https://twitter.com/MindsDB"
+                target="_blank"
+                rel="noreferrer noopener"
+                title="Twitter"
+                class="home-link12"
+              >
+                <svg viewBox="0 0 950.8571428571428 1024" class="home-icon04">
+                  <path
+                    d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://mindsdbcommunity.slack.com"
+                target="_blank"
+                title="Slack"
+                rel="noreferrer noopener"
+                class="home-link13"
+              >
+                <svg viewBox="0 0 1024 1024" class="home-icon06">
+                  <path
+                    d="M618.667 469.333c29.44 0 56.149-11.947 75.435-31.232s31.232-45.995 31.232-75.435v-213.333c0-29.44-11.947-56.149-31.232-75.435s-45.995-31.232-75.435-31.232-56.149 11.947-75.435 31.232-31.232 45.995-31.232 75.435v213.333c0 29.44 11.947 56.149 31.232 75.435s45.995 31.232 75.435 31.232zM618.667 384c-5.973 0-11.264-2.347-15.104-6.229s-6.229-9.131-6.229-15.104v-213.333c0-5.973 2.347-11.264 6.229-15.104s9.131-6.229 15.104-6.229 11.264 2.347 15.104 6.229 6.229 9.131 6.229 15.104v213.333c0 5.973-2.347 11.264-6.229 15.104s-9.131 6.229-15.104 6.229zM874.667 469.333c29.44 0 56.149-11.947 75.435-31.232s31.232-45.995 31.232-75.435-11.947-56.149-31.232-75.435-45.995-31.232-75.435-31.232-56.149 11.947-75.435 31.232-31.232 45.995-31.232 75.435v64c0 23.552 19.115 42.667 42.667 42.667zM874.667 384h-21.333v-21.333c0-5.973 2.347-11.264 6.229-15.104s9.131-6.229 15.104-6.229 11.264 2.347 15.104 6.229 6.229 9.131 6.229 15.104-2.347 11.264-6.229 15.104-9.131 6.229-15.104 6.229zM405.333 554.667c-29.44 0-56.149 11.947-75.435 31.232s-31.232 45.995-31.232 75.435v213.333c0 29.44 11.947 56.149 31.232 75.435s45.995 31.232 75.435 31.232 56.149-11.947 75.435-31.232 31.232-45.995 31.232-75.435v-213.333c0-29.44-11.947-56.149-31.232-75.435s-45.995-31.232-75.435-31.232zM405.333 640c5.973 0 11.264 2.347 15.104 6.229s6.229 9.131 6.229 15.104v213.333c0 5.973-2.347 11.264-6.229 15.104s-9.131 6.229-15.104 6.229-11.264-2.347-15.104-6.229-6.229-9.131-6.229-15.104v-213.333c0-5.973 2.347-11.264 6.229-15.104s9.131-6.229 15.104-6.229zM149.333 554.667c-29.44 0-56.149 11.947-75.435 31.232s-31.232 45.995-31.232 75.435 11.947 56.149 31.232 75.435 45.995 31.232 75.435 31.232 56.149-11.947 75.435-31.232 31.232-45.995 31.232-75.435v-64c0-23.552-19.115-42.667-42.667-42.667zM149.333 640h21.333v21.333c0 5.973-2.347 11.264-6.229 15.104s-9.131 6.229-15.104 6.229-11.264-2.347-15.104-6.229-6.229-9.131-6.229-15.104 2.347-11.264 6.229-15.104 9.131-6.229 15.104-6.229zM554.667 618.667c0 29.44 11.947 56.149 31.232 75.435s45.995 31.232 75.435 31.232h213.333c29.44 0 56.149-11.947 75.435-31.232s31.232-45.995 31.232-75.435-11.947-56.149-31.232-75.435-45.995-31.232-75.435-31.232h-213.333c-29.44 0-56.149 11.947-75.435 31.232s-31.232 45.995-31.232 75.435zM640 618.667c0-5.973 2.347-11.264 6.229-15.104s9.131-6.229 15.104-6.229h213.333c5.973 0 11.264 2.347 15.104 6.229s6.229 9.131 6.229 15.104-2.347 11.264-6.229 15.104-9.131 6.229-15.104 6.229h-213.333c-5.973 0-11.264-2.347-15.104-6.229s-6.229-9.131-6.229-15.104zM661.333 853.333c5.973 0 11.264 2.347 15.104 6.229s6.229 9.131 6.229 15.104-2.347 11.264-6.229 15.104-9.131 6.229-15.104 6.229-11.264-2.347-15.104-6.229-6.229-9.131-6.229-15.104v-21.333zM661.333 768h-64c-23.552 0-42.667 19.115-42.667 42.667v64c0 29.44 11.947 56.149 31.232 75.435s45.995 31.232 75.435 31.232 56.149-11.947 75.435-31.232 31.232-45.995 31.232-75.435-11.947-56.149-31.232-75.435-45.995-31.232-75.435-31.232zM384 405.333c0 5.973-2.347 11.264-6.229 15.104s-9.131 6.229-15.104 6.229h-213.333c-5.973 0-11.264-2.347-15.104-6.229s-6.229-9.131-6.229-15.104 2.347-11.264 6.229-15.104 9.131-6.229 15.104-6.229h213.333c5.973 0 11.264 2.347 15.104 6.229s6.229 9.131 6.229 15.104zM469.333 405.333c0-29.44-11.947-56.149-31.232-75.435s-45.995-31.232-75.435-31.232h-213.333c-29.44 0-56.149 11.947-75.435 31.232s-31.232 45.995-31.232 75.435 11.947 56.149 31.232 75.435 45.995 31.232 75.435 31.232h213.333c29.44 0 56.149-11.947 75.435-31.232s31.232-45.995 31.232-75.435zM362.667 170.667c-5.973 0-11.264-2.347-15.104-6.229s-6.229-9.131-6.229-15.104 2.347-11.264 6.229-15.104 9.131-6.229 15.104-6.229 11.264 2.347 15.104 6.229 6.229 9.131 6.229 15.104v21.333zM362.667 256h64c23.552 0 42.667-19.115 42.667-42.667v-64c0-29.44-11.947-56.149-31.232-75.435s-45.995-31.232-75.435-31.232-56.149 11.947-75.435 31.232-31.232 45.995-31.232 75.435 11.947 56.149 31.232 75.435 45.995 31.232 75.435 31.232z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div data-thq="thq-burger-menu" class="home-burger-menu">
+            <button class="button home-button" title="home">
+              <svg viewBox="0 0 1024 1024" class="home-icon08">
+                <path
+                  d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div data-thq="thq-mobile-menu" class="home-mobile-menu">
+            <div
+              data-thq="thq-mobile-menu-nav"
+              data-role="Nav"
+              class="home-nav1"
+            >
+              <div class="home-container05">
+                <span class="home-logo1">MindsDB Playground</span>
+                <div data-thq="thq-close-menu" class="home-menu-close">
+                  <svg viewBox="0 0 1024 1024" class="home-icon10">
+                    <path
+                      d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <nav
+                data-thq="thq-mobile-menu-nav-links"
+                data-role="Nav"
+                class="home-nav2"
+              >
+                <a href="#nlp" class="home-nlp1">NLP</a>
+                <a href="#predict" class="home-link14">Predictions</a>
+                <a
+                  href="https://docs.mindsdb.com/what-is-mindsdb"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="home-link15"
+                >
+                  Docs
+                </a>
+                <a
+                  href="https://github.com/mindsdb/mindsdb"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="home-link16"
+                >
+                  Github
+                </a>
+                <a
+                  href="https://cloud.mindsdb.com/login"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="home-link17"
+                >
+                  Cloud
+                </a>
+              </nav>
+            </div>
+            <div class="home-icon-group">
+              <a
+                href="https://twitter.com/MindsDB"
+                target="_blank"
+                title="Twitter"
+                rel="noreferrer noopener"
+                class="home-link18"
+              >
+                <svg viewBox="0 0 950.8571428571428 1024" class="home-icon12">
+                  <path
+                    d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://mindsdbcommunity.slack.com/"
+                target="_blank"
+                title="Slack"
+                rel="noreferrer noopener"
+                class="home-link19"
+              >
+                <svg viewBox="0 0 1024 1024" class="home-icon14">
+                  <path
+                    d="M618.667 469.333c29.44 0 56.149-11.947 75.435-31.232s31.232-45.995 31.232-75.435v-213.333c0-29.44-11.947-56.149-31.232-75.435s-45.995-31.232-75.435-31.232-56.149 11.947-75.435 31.232-31.232 45.995-31.232 75.435v213.333c0 29.44 11.947 56.149 31.232 75.435s45.995 31.232 75.435 31.232zM618.667 384c-5.973 0-11.264-2.347-15.104-6.229s-6.229-9.131-6.229-15.104v-213.333c0-5.973 2.347-11.264 6.229-15.104s9.131-6.229 15.104-6.229 11.264 2.347 15.104 6.229 6.229 9.131 6.229 15.104v213.333c0 5.973-2.347 11.264-6.229 15.104s-9.131 6.229-15.104 6.229zM874.667 469.333c29.44 0 56.149-11.947 75.435-31.232s31.232-45.995 31.232-75.435-11.947-56.149-31.232-75.435-45.995-31.232-75.435-31.232-56.149 11.947-75.435 31.232-31.232 45.995-31.232 75.435v64c0 23.552 19.115 42.667 42.667 42.667zM874.667 384h-21.333v-21.333c0-5.973 2.347-11.264 6.229-15.104s9.131-6.229 15.104-6.229 11.264 2.347 15.104 6.229 6.229 9.131 6.229 15.104-2.347 11.264-6.229 15.104-9.131 6.229-15.104 6.229zM405.333 554.667c-29.44 0-56.149 11.947-75.435 31.232s-31.232 45.995-31.232 75.435v213.333c0 29.44 11.947 56.149 31.232 75.435s45.995 31.232 75.435 31.232 56.149-11.947 75.435-31.232 31.232-45.995 31.232-75.435v-213.333c0-29.44-11.947-56.149-31.232-75.435s-45.995-31.232-75.435-31.232zM405.333 640c5.973 0 11.264 2.347 15.104 6.229s6.229 9.131 6.229 15.104v213.333c0 5.973-2.347 11.264-6.229 15.104s-9.131 6.229-15.104 6.229-11.264-2.347-15.104-6.229-6.229-9.131-6.229-15.104v-213.333c0-5.973 2.347-11.264 6.229-15.104s9.131-6.229 15.104-6.229zM149.333 554.667c-29.44 0-56.149 11.947-75.435 31.232s-31.232 45.995-31.232 75.435 11.947 56.149 31.232 75.435 45.995 31.232 75.435 31.232 56.149-11.947 75.435-31.232 31.232-45.995 31.232-75.435v-64c0-23.552-19.115-42.667-42.667-42.667zM149.333 640h21.333v21.333c0 5.973-2.347 11.264-6.229 15.104s-9.131 6.229-15.104 6.229-11.264-2.347-15.104-6.229-6.229-9.131-6.229-15.104 2.347-11.264 6.229-15.104 9.131-6.229 15.104-6.229zM554.667 618.667c0 29.44 11.947 56.149 31.232 75.435s45.995 31.232 75.435 31.232h213.333c29.44 0 56.149-11.947 75.435-31.232s31.232-45.995 31.232-75.435-11.947-56.149-31.232-75.435-45.995-31.232-75.435-31.232h-213.333c-29.44 0-56.149 11.947-75.435 31.232s-31.232 45.995-31.232 75.435zM640 618.667c0-5.973 2.347-11.264 6.229-15.104s9.131-6.229 15.104-6.229h213.333c5.973 0 11.264 2.347 15.104 6.229s6.229 9.131 6.229 15.104-2.347 11.264-6.229 15.104-9.131 6.229-15.104 6.229h-213.333c-5.973 0-11.264-2.347-15.104-6.229s-6.229-9.131-6.229-15.104zM661.333 853.333c5.973 0 11.264 2.347 15.104 6.229s6.229 9.131 6.229 15.104-2.347 11.264-6.229 15.104-9.131 6.229-15.104 6.229-11.264-2.347-15.104-6.229-6.229-9.131-6.229-15.104v-21.333zM661.333 768h-64c-23.552 0-42.667 19.115-42.667 42.667v64c0 29.44 11.947 56.149 31.232 75.435s45.995 31.232 75.435 31.232 56.149-11.947 75.435-31.232 31.232-45.995 31.232-75.435-11.947-56.149-31.232-75.435-45.995-31.232-75.435-31.232zM384 405.333c0 5.973-2.347 11.264-6.229 15.104s-9.131 6.229-15.104 6.229h-213.333c-5.973 0-11.264-2.347-15.104-6.229s-6.229-9.131-6.229-15.104 2.347-11.264 6.229-15.104 9.131-6.229 15.104-6.229h213.333c5.973 0 11.264 2.347 15.104 6.229s6.229 9.131 6.229 15.104zM469.333 405.333c0-29.44-11.947-56.149-31.232-75.435s-45.995-31.232-75.435-31.232h-213.333c-29.44 0-56.149 11.947-75.435 31.232s-31.232 45.995-31.232 75.435 11.947 56.149 31.232 75.435 45.995 31.232 75.435 31.232h213.333c29.44 0 56.149-11.947 75.435-31.232s31.232-45.995 31.232-75.435zM362.667 170.667c-5.973 0-11.264-2.347-15.104-6.229s-6.229-9.131-6.229-15.104 2.347-11.264 6.229-15.104 9.131-6.229 15.104-6.229 11.264 2.347 15.104 6.229 6.229 9.131 6.229 15.104v21.333zM362.667 256h64c23.552 0 42.667-19.115 42.667-42.667v-64c0-29.44-11.947-56.149-31.232-75.435s-45.995-31.232-75.435-31.232-56.149 11.947-75.435 31.232-31.232 45.995-31.232 75.435 11.947 56.149 31.232 75.435 45.995 31.232 75.435 31.232z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.facebook.com/MindsDB/"
+                target="_blank"
+                title="Facebook"
+                rel="noreferrer noopener"
+                class="home-link20"
+              >
+                <svg viewBox="0 0 602.2582857142856 1024" class="home-icon16">
+                  <path
+                    d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </header>
+        <section class="home-landing-page">
+          <div class="home-heading">
+            <h1 class="home-header">
+              Play with the immersive capabilities of MindsDB
+            </h1>
+            <p class="home-caption">The Ultimate MindsDB experience for ALL</p>
+          </div>
+          <div class="home-container06">
+            <a href="#intro" class="home-view button">Let's Get Started</a>
+          </div>
+        </section>
+        <section class="home-description">
+          <img
+            alt="image"
+            src="./asset/divider.png"
+            class="home-divider-image"
+          />
+        </section>
+        <section id="intro" class="home-minds-db-introduction">
+          <div class="home-what-is-minds-db">
+            <div class="home-content">
+              <div class="home-heading1">
+                <h2 class="home-header01">What is MindsDB?</h2>
+                <p class="home-header02">
+                  <span class="home-text10">
+                    Data that lives in your database is a valuable asset.
+                    MindsDB enables you to use your data and make forecasts. It
+                    speeds up the ML development process by bringing machine
+                    learning into the database.
+                  </span>
+                  <br class="home-text11" />
+                  <br class="home-text12" />
+                  <span class="home-text13">
+                    With MindsDB, you can build, train, optimize, and deploy
+                    your ML models without the need for other platforms. And to
+                    get the forecasts, simply query your data and ML models.
+                  </span>
+                </p>
+              </div>
+              <a
+                href="https://docs.mindsdb.com/quickstart"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="home-view01 button-link button"
+              >
+                <span>Learn More</span>
+                <img alt="image" src="./asset/arrow.svg" class="home-image" />
+              </a>
+            </div>
+            <img
+              alt="image"
+              src="./asset/634adf9b3b326923fde5fe29_mindsdb-core logo.svg"
+              class="home-image1"
+            />
+          </div>
+        </section>
+        <section id="nlp" class="home-natural-language-processing">
+          <div class="home-container07">
+            <h1 class="home-nlp-heading">Natural Language Processing</h1>
+            <strong class="home-text15">
+              MindsDB's NLP capabilities allow for natural language processing
+              in machine learning models. Quickly analyze, classify and generate
+              text data.
+            </strong>
+          </div>
+          <div id="summarizeText" class="home-summarize-text">
+            <div class="home-top-bar">
+              <a href="#home" class="home-link21">
+                <div class="home-back-top button">
+                  <label class="home-text16">Back to Top&nbsp;</label>
+                  <svg viewBox="0 0 1024 1024" class="home-icon18">
+                    <path
+                      d="M170 512l342-342 342 342-62 60-238-238v520h-84v-520l-240 238z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="/download/summary"
+                class="home-button01 button"
+                title="Download the SQL cheat sheet for this."
+              >
+                <svg
+                  viewBox="0 0 1024 1024"
+                  background="#00a587"
+                  class="home-icon20"
+                >
+                  <path
+                    d="M214 768h596v86h-596v-86zM810 384l-298 298-298-298h170v-256h256v256h170z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="home-main">
+              <div class="home-content01">
+                <h2 class="home-header03">Summarize Texts</h2>
+                <p class="home-description01">
+                  Worried of long paragraphs? Well, simply paste your long
+                  boring text here and let our awesome MindsDB models extract a
+                  summary for you.
+                </p>
+              </div>
+            </div>
+            <form class="home-form" onsubmit="handleSummary(event)">
+              <textarea
+                id="summaryInput"
+                resize="none !important"
+                required="true"
+                placeholder="Paragraph Here"
+                class="home-textarea textarea"
+              ></textarea>
+              <div class="home-radio-buttons">
+                <h1 class="home-text17">Select Engine:</h1>
+                <input
+                  type="radio"
+                  id="summaryOpenAI"
+                  name="summaryEngine"
+                  value="OpenAI"
+                  required=""
+                  title="OpenAI"
+                  class="home-open-a-radio"
+                />
+                <label class="home-open-a-label">OpenAI</label>
+                <input
+                  type="radio"
+                  id="summaryHuggingFace"
+                  name="summaryEngine"
+                  value="HuggingFace"
+                  required=""
+                  title="HuggingFace"
+                  class="home-hugging-face-radio"
+                />
+                <label class="home-hugging-face-label">Hugging Face</label>
+              </div>
+              <button id="findSummary" type="submit" class="home-view02 button">
+                Extract Summary
+              </button>
+            </form>
+            <div class="home-result morph" id="summaryDiv">
+              <button class="home-button02 button" title="Close">
+                <svg viewBox="0 0 1024 1024" class="home-icon22">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                  ></path>
+                </svg>
+              </button>
+              <p class="home-text18" id="summaryResult"></p>
+            </div>
+          </div>
+          <div id="analyzeSentiment" class="home-analyze-sentiments">
+            <div class="home-top-bar01">
+              <a href="#home" class="home-link22">
+                <div class="home-back-top01 button">
+                  <label class="home-text19">Back to Top&nbsp;</label>
+                  <svg viewBox="0 0 1024 1024" class="home-icon24">
+                    <path
+                      d="M170 512l342-342 342 342-62 60-238-238v520h-84v-520l-240 238z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="/download/sentiment"
+                class="home-button03 button"
+                title="Download the SQL cheat sheet for this."
+              >
+                <svg viewBox="0 0 1024 1024" class="home-icon26">
+                  <path
+                    d="M214 768h596v86h-596v-86zM810 384l-298 298-298-298h170v-256h256v256h170z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="home-main01">
+              <div class="home-content02">
+                <h2 class="home-header04">Analyze Sentiments</h2>
+                <p class="home-description02">
+                  Provide a text and simply let our amazing MindsDB models do
+                  the sentiment analysis of your text for you.
+                </p>
+              </div>
+            </div>
+            <form class="home-form01" onsubmit="handleSentiment(event)">
+              <textarea
+                id="sentimentInput"
+                required="true"
+                placeholder="Enter your text here"
+                class="home-textarea1 textarea"
+              ></textarea>
+              <div class="home-radio-buttons1">
+                <h1 class="home-text20">Select Engine:</h1>
+                <input
+                  type="radio"
+                  id="sentimentOpenAI"
+                  name="sentimentEngine"
+                  value="OpenAI"
+                  required=""
+                  title="OpenAI"
+                  class="home-open-a-radio1"
+                />
+                <label class="home-open-a-label1">OpenAI</label>
+                <input
+                  type="radio"
+                  id="sentimentHuggingFace"
+                  name="sentimentEngine"
+                  value="HuggingFace"
+                  required="HuggingFace"
+                  title="HuggingFace"
+                  class="home-hugging-face-radio1"
+                />
+                <label id="ashflabel" class="home-hugging-face-label1">
+                  Hugging Face
+                </label>
+              </div>
+              <button
+                id="findSentiment"
+                type="submit"
+                class="home-view03 button"
+              >
+                Analyze Sentiment
+              </button>
+            </form>
+            <div class="home-result01 morph" id="sentimentDiv">
+              <button class="home-button04 button" title="Close">
+                <svg viewBox="0 0 1024 1024" class="home-icon28">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                  ></path>
+                </svg>
+              </button>
+              <p class="home-text21" id="sentimentResult"></p>
+            </div>
+          </div>
+          <div id="translation" class="home-translate-text">
+            <div class="home-top-bar02">
+              <a href="#home" class="home-link23">
+                <div class="home-back-top02 button">
+                  <label class="home-text22">Back to Top&nbsp;</label>
+                  <svg viewBox="0 0 1024 1024" class="home-icon30">
+                    <path
+                      d="M170 512l342-342 342 342-62 60-238-238v520h-84v-520l-240 238z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="/download/translations"
+                class="home-button05 button"
+                title="Download the SQL cheat sheet for this."
+              >
+                <svg
+                  viewBox="0 0 1024 1024"
+                  background="#00a587"
+                  class="home-icon32"
+                >
+                  <path
+                    d="M214 768h596v86h-596v-86zM810 384l-298 298-298-298h170v-256h256v256h170z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="home-main02">
+              <div class="home-content03">
+                <h2 class="home-header05">Translations</h2>
+                <p class="home-description03">
+                  Let our amazing MindsDB models powered by OpenAI do some
+                  translations for you on the GO!
+                </p>
+              </div>
+            </div>
+            <form class="home-form02" onsubmit="handleTranslation(event)">
+              <textarea
+                id="translationInput"
+                required="true"
+                placeholder="Enter Text Here"
+                class="home-textarea2 textarea"
+              ></textarea>
+              <select
+                id="translationChoice"
+                required=""
+                class="home-select"
+                title="lang-select"
+              >
+                <option value="Fr-EN" selected="">French to English</option>
+                <option value="Es-EN">Spanish to English</option>
+                <option value="EN-Fr">English to French</option>
+              </select>
+              <div class="home-radio-buttons2">
+                <h1 class="home-text23">Select Engine:</h1>
+                <input
+                  type="radio"
+                  id="translationOpenAI"
+                  name="translationEngine"
+                  value="OpenAI"
+                  required=""
+                  title="OpenAI"
+                  class="home-open-a-radio2"
+                />
+                <label class="home-open-a-label2">OpenAI</label>
+                <input
+                  type="radio"
+                  id="translationHuggingFace"
+                  name="translationEngine"
+                  value="HuggingFace"
+                  required=""
+                  title="HuggingFace"
+                  class="home-hugging-face-radio2"
+                />
+                <label class="home-hugging-face-label2">Hugging Face</label>
+              </div>
+              <button
+                id="findTranslation"
+                type="submit"
+                class="home-view04 button"
+              >
+                Translate
+              </button>
+            </form>
+            <div class="home-result02 morph" id="translationDiv">
+              <button class="home-button06 button" title="Close">
+                <svg viewBox="0 0 1024 1024" class="home-icon34">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                  ></path>
+                </svg>
+              </button>
+              <p class="home-text24" id="translationResult"></p>
+            </div>
+          </div>
+          <div id="spamDetection" class="home-spam-detection">
+            <div class="home-top-bar03">
+              <a href="#home" class="home-link24">
+                <div class="home-back-top03 button">
+                  <label class="home-text25">Back to Top&nbsp;</label>
+                  <svg viewBox="0 0 1024 1024" class="home-icon36">
+                    <path
+                      d="M170 512l342-342 342 342-62 60-238-238v520h-84v-520l-240 238z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="/download/spam"
+                class="home-button07 button"
+                title="Download the SQL cheat sheet for this."
+              >
+                <svg viewBox="0 0 1024 1024" class="home-icon38">
+                  <path
+                    d="M214 768h596v86h-596v-86zM810 384l-298 298-298-298h170v-256h256v256h170z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="home-main03">
+              <div class="home-content04">
+                <h2 class="home-header06">Spam Detection</h2>
+                <p class="home-description04">
+                  Spam emails or texts are a big pain for all of us. But worry
+                  no more, as you can now detect spam texts using our amazing
+                  spam detection models.
+                </p>
+              </div>
+            </div>
+            <form class="home-form03" onsubmit="handleSpam(event)">
+              <textarea
+                id="spamInput"
+                required="true"
+                placeholder="Enter your text here"
+                class="home-textarea3 textarea"
+              ></textarea>
+              <div class="home-radio-buttons3">
+                <h1 class="home-text26">Select Engine:</h1>
+                <input
+                  type="radio"
+                  id="spamOpenAI"
+                  name="spamEngine"
+                  value="OpenAI"
+                  required=""
+                  title="OpenAI"
+                  class="home-open-a-radio3"
+                />
+                <label class="home-open-a-label3">OpenAI</label>
+                <input
+                  type="radio"
+                  id="spamHuggingFace"
+                  name="spamEngine"
+                  value="HuggingFace"
+                  required=""
+                  title="HuggingFace"
+                  class="home-hugging-face-radio3"
+                />
+                <label class="home-hugging-face-label3">Hugging Face</label>
+              </div>
+              <button id="findSpam" type="submit" class="home-view05 button">
+                Detect Spam
+              </button>
+            </form>
+            <div class="home-result03 morph" id="spamDiv">
+              <button class="home-button08 button" title="Close">
+                <svg viewBox="0 0 1024 1024" class="home-icon40">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                  ></path>
+                </svg>
+              </button>
+              <p class="home-text27" id="spamResult"></p>
+            </div>
+          </div>
+          <div id="jsonExtraction" class="home-json-extraction">
+            <div class="home-top-bar04">
+              <a href="#home" class="home-link25">
+                <div class="home-back-top04 button">
+                  <label class="home-text28">Back to Top&nbsp;</label>
+                  <svg viewBox="0 0 1024 1024" class="home-icon42">
+                    <path
+                      d="M170 512l342-342 342 342-62 60-238-238v520h-84v-520l-240 238z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="/download/json"
+                class="home-button09 button"
+                title="Download the SQL cheat sheet for this."
+              >
+                <svg
+                  viewBox="0 0 1024 1024"
+                  background="#00a587"
+                  class="home-icon44"
+                >
+                  <path
+                    d="M214 768h596v86h-596v-86zM810 384l-298 298-298-298h170v-256h256v256h170z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="home-main04">
+              <div class="home-content05">
+                <h2 class="home-header07">JSON Extraction</h2>
+                <p class="home-description05">
+                  <span>
+                    Provide a Movie synopsis below and let our powerful model
+                    fetch a JSON output with the Movie Name, Director, Star cast
+                    and the Plot of the movie for you.
+                  </span>
+                  <br />
+                </p>
+              </div>
+            </div>
+            <form class="home-form04" onsubmit="handleJson(event)">
+              <textarea
+                id="jsonInput"
+                resize="none"
+                required="true"
+                placeholder="Enter the Movie Synopsis Here"
+                class="home-textarea4 textarea"
+              ></textarea>
+              <div class="home-radio-buttons4">
+                <h1 class="home-text31">Select Engine:</h1>
+                <input
+                  type="radio"
+                  id="jsonOpenAI"
+                  name="jsonEngine"
+                  value="OpenAI"
+                  required=""
+                  title="OpenAI"
+                  class="home-open-a-radio4"
+                />
+                <label class="home-open-a-label4">OpenAI</label>
+              </div>
+              <button id="findJSON" type="submit" class="home-view06 button">
+                Extract JSON
+              </button>
+            </form>
+            <div class="home-result04 morph" id="jsonDiv">
+              <button class="home-button10 button" title="Close">
+                <svg viewBox="0 0 1024 1024" class="home-icon46">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                  ></path>
+                </svg>
+              </button>
+              <p class="home-text32" id="jsonResult"></p>
+            </div>
+          </div>
+          <div id="qNa" class="home-question-answering">
+            <div class="home-top-bar05">
+              <a href="#home" class="home-link26">
+                <div class="home-back-top05 button">
+                  <label class="home-text33">Back to Top&nbsp;</label>
+                  <svg viewBox="0 0 1024 1024" class="home-icon48">
+                    <path
+                      d="M170 512l342-342 342 342-62 60-238-238v520h-84v-520l-240 238z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="/download/qna"
+                class="home-button11 button"
+                title="Download the SQL cheat sheet for this."
+              >
+                <svg viewBox="0 0 1024 1024" class="home-icon50">
+                  <path
+                    d="M214 768h596v86h-596v-86zM810 384l-298 298-298-298h170v-256h256v256h170z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="home-main05">
+              <div class="home-content06">
+                <h2 class="home-header08">Question Answering</h2>
+                <p class="home-description06">
+                  Now you can ask anything, starting from your assignment
+                  questions to details about MindsDB on the GO! Thanks to our
+                  robust MindsDB Question-Answering models.
+                </p>
+              </div>
+            </div>
+            <form class="home-form05" onsubmit="handleQNA(event)">
+              <textarea
+                id="questionInput"
+                resize="none"
+                required="true"
+                placeholder="Enter your question here"
+                class="home-textarea5 textarea"
+              ></textarea>
+              <div class="home-radio-buttons5">
+                <h1 class="home-text34">Select Engine:</h1>
+                <input
+                  type="radio"
+                  id="qnaOpenAI"
+                  name="qnaEngine"
+                  value="OpenAI"
+                  required=""
+                  title="OpenAI"
+                  class="home-open-a-radio5"
+                />
+                <label class="home-open-a-label5">OpenAI</label>
+              </div>
+              <button id="findAnswer" type="submit" class="home-view07 button">
+                Find Answer
+              </button>
+            </form>
+            <div class="home-result05 morph" id="qnaDiv">
+              <button class="home-button12 button" title="Close">
+                <svg viewBox="0 0 1024 1024" class="home-icon52">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                  ></path>
+                </svg>
+              </button>
+              <p class="home-text35" id="qnaResult"></p>
+            </div>
+          </div>
+          <div id="esgExtraction" class="home-esg-labelling">
+            <div class="home-top-bar04">
+              <a href="#home" class="home-link25">
+                <div class="home-back-top04 button">
+                  <label class="home-text28">Back to Top&nbsp;</label>
+                  <svg viewBox="0 0 1024 1024" class="home-icon42">
+                    <path
+                      d="M170 512l342-342 342 342-62 60-238-238v520h-84v-520l-240 238z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="/download/esg"
+                class="home-button09 button"
+                title="Download the SQL cheat sheet for this."
+              >
+                <svg
+                  viewBox="0 0 1024 1024"
+                  background="#00a587"
+                  class="home-icon44"
+                >
+                  <path
+                    d="M214 768h596v86h-596v-86zM810 384l-298 298-298-298h170v-256h256v256h170z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="home-main04">
+              <div class="home-content05">
+                <h2 class="home-header07">ESG Labelling</h2>
+                <p class="home-description05">
+                  <span>
+                    Now you can add the ESG (Environmental, Social, and
+                    Governance) based labels to text using natural language
+                    processing (NLP) techniques powered by MindsDB and
+                    HuggingFace instantly.
+                  </span>
+                  <br />
+                </p>
+              </div>
+            </div>
+            <form class="home-form04" onsubmit="handleEsg(event)">
+              <textarea
+                id="esgInput"
+                resize="none"
+                required="true"
+                placeholder="Enter the text for ESG labelling here."
+                class="home-textarea4 textarea"
+              ></textarea>
+              <div class="home-radio-buttons4">
+                <h1 class="home-text31">Select Engine:</h1>
+                <input
+                  type="radio"
+                  id="esgHuggingFace"
+                  name="esgEngine"
+                  value="HuggingFace"
+                  required=""
+                  title="HuggingFace"
+                  class="home-open-a-radio4"
+                />
+                <label class="home-open-a-label4">HuggingFace</label>
+              </div>
+              <button id="findESG" type="submit" class="home-view06 button">
+                Label ESG
+              </button>
+            </form>
+            <div class="home-result04 morph" id="esgDiv">
+              <button class="home-button26 button" title="Close">
+                <svg viewBox="0 0 1024 1024" class="home-icon46">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                  ></path>
+                </svg>
+              </button>
+              <p class="home-text32" id="esgResult"></p>
+            </div>
+          </div>
+          <div id="industry" class="home-industry-labelling">
+            <div class="home-top-bar05">
+              <a href="#home" class="home-link26">
+                <div class="home-back-top05 button">
+                  <label class="home-text33">Back to Top&nbsp;</label>
+                  <svg viewBox="0 0 1024 1024" class="home-icon48">
+                    <path
+                      d="M170 512l342-342 342 342-62 60-238-238v520h-84v-520l-240 238z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="/download/industry"
+                class="home-button11 button"
+                title="Download the SQL cheat sheet for this."
+              >
+                <svg viewBox="0 0 1024 1024" class="home-icon50">
+                  <path
+                    d="M214 768h596v86h-596v-86zM810 384l-298 298-298-298h170v-256h256v256h170z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="home-main05">
+              <div class="home-content06">
+                <h2 class="home-header08">Industry Identification</h2>
+                <p class="home-description06">
+                  Determine and label the type of associated industry based on
+                  your text inputs hassle-free. Our super fast models will
+                  determine the most accurate industry with just a click.
+                </p>
+              </div>
+            </div>
+            <form class="home-form05" onsubmit="handleIndustry(event)">
+              <textarea
+                id="industryInput"
+                resize="none"
+                required="true"
+                placeholder="Enter you text here industry classification."
+                class="home-textarea5 textarea"
+              ></textarea>
+              <div class="home-radio-buttons5">
+                <h1 class="home-text34">Select Engine:</h1>
+                <input
+                  type="radio"
+                  id="industryHuggingFace"
+                  name="industryEngine"
+                  value="HuggingFace"
+                  required=""
+                  title="HuggingFace"
+                  class="home-open-a-radio5"
+                />
+                <label class="home-open-a-label5">HuggingFace</label>
+              </div>
+              <button
+                id="findIndustry"
+                type="submit"
+                class="home-view07 button"
+              >
+                Identify Industry
+              </button>
+            </form>
+            <div class="home-result05 morph" id="industryDiv">
+              <button class="home-button25 button" title="Close">
+                <svg viewBox="0 0 1024 1024" class="home-icon52">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                  ></path>
+                </svg>
+              </button>
+              <p class="home-text35" id="industryResult"></p>
+            </div>
+          </div>
+        </section>
+        <section id="predict" class="home-predictions1">
+          <div class="home-container08">
+            <h1 class="home-text36">Predictions</h1>
+            <strong class="home-text37">
+              MindsDB provides AI-powered predictions with unparalleled ease of
+              use. Get insights, predictions, and forecasts in seconds.
+            </strong>
+          </div>
+          <div id="predictMobile" class="home-predict-mobile-price">
+            <div class="home-top-bar06">
+              <a href="#home" class="home-link27">
+                <div class="home-back-top06 button">
+                  <label class="home-text38">Back to Top&nbsp;</label>
+                  <svg viewBox="0 0 1024 1024" class="home-icon54">
+                    <path
+                      d="M170 512l342-342 342 342-62 60-238-238v520h-84v-520l-240 238z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="/download/mobile"
+                class="home-button13 button"
+                title="Download the SQL cheat sheet for this."
+              >
+                <svg
+                  viewBox="0 0 1024 1024"
+                  background="#00a587"
+                  class="home-icon56"
+                >
+                  <path
+                    d="M214 768h596v86h-596v-86zM810 384l-298 298-298-298h170v-256h256v256h170z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="home-main06">
+              <div class="home-content07">
+                <h2 class="home-header09">Predict the Price of a Mobile</h2>
+                <p class="home-description07">
+                  Let our amazing Predictor Models predict the price of your
+                  next mobile phone based on the specs you want.
+                </p>
+              </div>
+            </div>
+            <form class="home-form06" onsubmit="handleMobilePrice(event)">
+              <div class="home-container09">
+                <div class="home-container10">
+                  <h1 class="home-text39">Brand</h1>
+                  <input
+                    type="text"
+                    id="brand"
+                    required=""
+                    placeholder="Enter the Brand Name"
+                    class="home-textinput input"
+                  />
+                </div>
+                <div class="home-container11">
+                  <h1 class="home-text40">Model</h1>
+                  <input
+                    type="text"
+                    id="model"
+                    required=""
+                    placeholder="Enter the Model Name"
+                    class="home-textinput01 input"
+                  />
+                </div>
+                <div class="home-container12">
+                  <h1 class="home-text41">Storage</h1>
+                  <input
+                    type="number"
+                    id="storage"
+                    required=""
+                    placeholder="Enter the Storage Capacity"
+                    class="home-textinput02 input"
+                  />
+                </div>
+                <div class="home-container13">
+                  <h1 class="home-text42">
+                    <span>RAM</span>
+                    <span>(GB)</span>
+                  </h1>
+                  <input
+                    type="number"
+                    id="ram"
+                    required=""
+                    placeholder="Enter the RAM Capacity"
+                    class="home-textinput03 input"
+                  />
+                </div>
+                <div class="home-container14">
+                  <h1 class="home-text45">
+                    <span>Screen Size</span>
+                    <span>(inch)</span>
+                  </h1>
+                  <input
+                    type="number"
+                    id="screen"
+                    required=""
+                    placeholder="Enter the Screen Size"
+                    class="home-textinput04 input"
+                  />
+                </div>
+                <div class="home-container15">
+                  <h1 class="home-text48">Camera</h1>
+                  <input
+                    type="number"
+                    id="camera"
+                    required=""
+                    placeholder="Enter the Camera Resolution"
+                    class="home-textinput05 input"
+                  />
+                </div>
+                <div class="home-container16">
+                  <h1 class="home-text49">
+                    <span>Battery&nbsp;&nbsp;</span>
+                    <span>(mAh)</span>
+                  </h1>
+                  <input
+                    type="number"
+                    id="battery"
+                    required=""
+                    placeholder="Enter the Battery Capacity"
+                    class="home-textinput06 input"
+                  />
+                </div>
+              </div>
+              <button
+                id="predictMobilePrice"
+                type="submit"
+                class="home-button14 button"
+              >
+                Predict Mobile Price
+              </button>
+            </form>
+            <div class="home-result06 morph" id="mobileDiv">
+              <button class="home-button15 button" title="Close">
+                <svg viewBox="0 0 1024 1024" class="home-icon58">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                  ></path>
+                </svg>
+              </button>
+              <p class="home-text52" id="mobileResult"></p>
+            </div>
+          </div>
+          <div id="forecastETH" class="home-predict-ethereum-price">
+            <div class="home-top-bar07">
+              <a href="#home" class="home-link28">
+                <div class="home-back-top07 button">
+                  <label class="home-text53">Back to Top&nbsp;</label>
+                  <svg viewBox="0 0 1024 1024" class="home-icon60">
+                    <path
+                      d="M170 512l342-342 342 342-62 60-238-238v520h-84v-520l-240 238z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="/download/eth"
+                class="home-button16 button"
+                title="Download the SQL cheat sheet for this."
+              >
+                <svg viewBox="0 0 1024 1024" class="home-icon62">
+                  <path
+                    d="M214 768h596v86h-596v-86zM810 384l-298 298-298-298h170v-256h256v256h170z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="home-main07">
+              <div class="home-content08">
+                <h2 class="home-header10">Forecast Ethereum Price</h2>
+                <p class="home-description08">
+                  Now you can forecast the Ethereum Closing prices for any
+                  future dates till the next year. Thanks to your amazing Time
+                  Series Models. Prediction models.
+                </p>
+              </div>
+            </div>
+            <form class="home-form07" onsubmit="handleEthPrices(event)">
+              <input
+                id="ethInput"
+                required="true"
+                placeholder="Enter the date here in the format YYYY-MM-DD strictly."
+                class="home-textarea6 textarea"
+                type="date"
+                value="2023-04-22"
+                min="2023-04-21"
+                max="2023-06-24"
+              />
+              <button
+                id="findEthPrice"
+                type="submit"
+                class="home-view08 button"
+              >
+                Find Ethereum Price
+              </button>
+              <button
+                title="The current model can forecast till 25th June 2023."
+                disabled=""
+                autofocus=""
+                class="home-button17 button"
+              >
+                <svg viewBox="0 0 1024 1024" class="home-icon64">
+                  <path
+                    d="M470 384v-86h84v86h-84zM512 854q140 0 241-101t101-241-101-241-241-101-241 101-101 241 101 241 241 101zM512 86q176 0 301 125t125 301-125 301-301 125-301-125-125-301 125-301 301-125zM470 726v-256h84v256h-84z"
+                  ></path>
+                </svg>
+              </button>
+            </form>
+            <div class="home-result07 morph" id="ethDiv">
+              <button class="home-button18 button" title="Close">
+                <svg viewBox="0 0 1024 1024" class="home-icon66">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                  ></path>
+                </svg>
+              </button>
+              <p class="home-text54" id="ethResult"></p>
+            </div>
+          </div>
+          <div id="predictWater" class="home-predict-water-potability">
+            <div class="home-top-bar08">
+              <a href="#home" class="home-link29">
+                <div class="home-back-top08 button">
+                  <label class="home-text55">Back to Top&nbsp;</label>
+                  <svg viewBox="0 0 1024 1024" class="home-icon68">
+                    <path
+                      d="M170 512l342-342 342 342-62 60-238-238v520h-84v-520l-240 238z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="/download/water"
+                class="home-button19 button"
+                title="Download the SQL cheat sheet for this."
+              >
+                <svg
+                  viewBox="0 0 1024 1024"
+                  background="#00a587"
+                  class="home-icon70"
+                >
+                  <path
+                    d="M214 768h596v86h-596v-86zM810 384l-298 298-298-298h170v-256h256v256h170z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="home-main08">
+              <div class="home-content09">
+                <h2 class="home-header11">Predict Water Potability</h2>
+                <p class="home-description09">
+                  <span>
+                    Ensuring safe water for all with MindsDB's Potability
+                    Predictor
+                  </span>
+                  <br />
+                </p>
+              </div>
+            </div>
+            <form class="home-form08" onsubmit="handleWaterQuality(event)">
+              <div class="home-container17">
+                <div class="home-container18">
+                  <input
+                    type="number"
+                    id="ph"
+                    required=""
+                    placeholder="Enter the pH Value"
+                    class="home-textinput07 input"
+                  />
+                  <h1 class="home-text58">pH</h1>
+                </div>
+                <div class="home-container19">
+                  <h1 class="home-text59">Hardness</h1>
+                  <input
+                    type="number"
+                    id="hardness"
+                    required=""
+                    placeholder="Enter the Hardness Value"
+                    class="home-textinput08 input"
+                  />
+                </div>
+                <div class="home-container20">
+                  <h1 class="home-text60">Solids</h1>
+                  <input
+                    type="number"
+                    id="solids"
+                    required=""
+                    placeholder="Enter the Solids Value"
+                    class="home-textinput09 input"
+                  />
+                </div>
+                <div class="home-container21">
+                  <h1 class="home-text61">Chloramines</h1>
+                  <input
+                    type="number"
+                    id="chloramines"
+                    required=""
+                    placeholder="Enter the Chloramines Value"
+                    class="home-textinput10 input"
+                  />
+                </div>
+                <div class="home-container22">
+                  <h1 class="home-text62">Sulfate</h1>
+                  <input
+                    type="number"
+                    id="sulfate"
+                    required=""
+                    placeholder="Enter the Sulfate Value"
+                    class="home-textinput11 input"
+                  />
+                </div>
+                <div class="home-container23">
+                  <h1 class="home-text63">Conductivity</h1>
+                  <input
+                    type="number"
+                    id="conductivity"
+                    required=""
+                    placeholder="Enter the Conductivity Value"
+                    class="home-textinput12 input"
+                  />
+                </div>
+                <div class="home-container24">
+                  <h1 class="home-text64">Organic Carbon</h1>
+                  <input
+                    type="number"
+                    id="carbon"
+                    required=""
+                    placeholder="Enter the Organic Carbon Value"
+                    class="home-textinput13 input"
+                  />
+                </div>
+                <div class="home-container25">
+                  <h1 class="home-text65">Trihalomethanes</h1>
+                  <input
+                    type="number"
+                    id="trihalomethanes"
+                    required=""
+                    placeholder="Enter the Trihalomathanes Value"
+                    class="home-textinput14 input"
+                  />
+                </div>
+                <div class="home-container26">
+                  <h1 class="home-text66">Turbidity</h1>
+                  <input
+                    type="number"
+                    id="turbidity"
+                    required=""
+                    placeholder="Enter the Turbidity Value"
+                    class="home-textinput15 input"
+                  />
+                </div>
+              </div>
+              <button
+                id="predictWaterPotability"
+                type="submit"
+                class="home-button20 button"
+              >
+                Predict Water Potability
+              </button>
+            </form>
+            <div class="home-result08 morph" id="waterDiv">
+              <button class="home-button21 button" title="Close">
+                <svg viewBox="0 0 1024 1024" class="home-icon72">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                  ></path>
+                </svg>
+              </button>
+              <p class="home-text67" id="waterResult"></p>
+            </div>
+          </div>
+          <div id="forecastTesla" class="home-predict-tesla-stock-prices">
+            <div class="home-top-bar09">
+              <a href="#home" class="home-link30">
+                <div class="home-back-top09 button">
+                  <label class="home-text68">Back to Top&nbsp;</label>
+                  <svg viewBox="0 0 1024 1024" class="home-icon74">
+                    <path
+                      d="M170 512l342-342 342 342-62 60-238-238v520h-84v-520l-240 238z"
+                    ></path>
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="/download/tesla"
+                class="home-button22 button"
+                title="Download the SQL cheat sheet for this."
+              >
+                <svg viewBox="0 0 1024 1024" class="home-icon76">
+                  <path
+                    d="M214 768h596v86h-596v-86zM810 384l-298 298-298-298h170v-256h256v256h170z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="home-main09">
+              <div class="home-content10">
+                <h2 class="home-header12">Forecast Tesla Stock Prices</h2>
+                <p class="home-description10">
+                  Our Timeseries Models can not only predict the future values
+                  for Cryptocurrencies but also can predict the stock prices of
+                  your favorite companies too.
+                </p>
+              </div>
+            </div>
+            <form class="home-form09" onsubmit="handleStockPrices(event)">
+              <input
+                id="teslaInput"
+                required="true"
+                placeholder="Enter the date here in the format YYYY-MM-DD strictly."
+                class="home-textarea7 textarea"
+                type="date"
+                min="2023-04-21"
+                max="2023-06-24"
+              />
+              <button
+                id="predictTeslaStock"
+                type="submit"
+                class="home-view09 button"
+              >
+                Predict Tesla Stock Price
+              </button>
+              <button
+                type="reset"
+                title="The current model can forecast till 25th June 2023."
+                disabled=""
+                autofocus=""
+                class="home-button23 button"
+              >
+                <svg viewBox="0 0 1024 1024" class="home-icon78">
+                  <path
+                    d="M470 384v-86h84v86h-84zM512 854q140 0 241-101t101-241-101-241-241-101-241 101-101 241 101 241 241 101zM512 86q176 0 301 125t125 301-125 301-301 125-301-125-125-301 125-301 301-125zM470 726v-256h84v256h-84z"
+                  ></path>
+                </svg>
+              </button>
+            </form>
+            <div class="home-result09 morph" id="teslaDiv">
+              <button class="home-button24 button" title="Close">
+                <svg viewBox="0 0 1024 1024" class="home-icon80">
+                  <path
+                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                  ></path>
+                </svg>
+              </button>
+              <p class="home-text69" id="teslaResult"></p>
+            </div>
+          </div>
+        </section>
+        <section class="home-sign-up">
+          <div class="home-content11">
+            <div class="home-main10">
+              <div class="home-heading2">
+                <h2 class="home-header13">Get Started with MindsDB Now!</h2>
+                <strong class="home-text70">
+                  Enjoy the free trial for 30 days and then free forever service
+                  with 4K allowed data rows.&nbsp;
+                </strong>
+              </div>
+              <a
+                href="https://cloud.mindsdb.com/register"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="home-view10 button"
+              >
+                <span>
+                  <span>Sign me Up</span>
+                  <br />
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
+        <footer class="home-footer">
+          <div class="home-main11">
+            <div class="home-branding">
+              <div class="home-heading3">
+                <a href="#home" class="home-link31">
+                  <h2 class="home-logo2">MindsDB Playground</h2>
+                </a>
+                <p class="home-caption1">
+                  <span class="home-text74">
+                    This site is made so that all the new users can play with
+                    different&nbsp;
+                  </span>
+                  <span>
+                    apps powered by MindsDB in different categories. We will
+                    keep adding more apps time to time.
+                  </span>
+                  <br />
+                </p>
+                <div class="home-socials1">
+                  <a
+                    href="https://twitter.com/MindsDB"
+                    target="_blank"
+                    title="Twitter"
+                    rel="noreferrer noopener"
+                    class="home-link32"
+                  >
+                    <svg
+                      viewBox="0 0 950.8571428571428 1024"
+                      class="home-icon82"
+                    >
+                      <path
+                        d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
+                      ></path>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.facebook.com/MindsDB/"
+                    target="_blank"
+                    title="Facebook"
+                    rel="noreferrer noopener"
+                    class="home-link33"
+                  >
+                    <svg
+                      viewBox="0 0 877.7142857142857 1024"
+                      class="home-icon84"
+                    >
+                      <path
+                        d="M713.143 73.143c90.857 0 164.571 73.714 164.571 164.571v548.571c0 90.857-73.714 164.571-164.571 164.571h-107.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-304c-90.857 0-164.571-73.714-164.571-164.571v-548.571c0-90.857 73.714-164.571 164.571-164.571h548.571z"
+                      ></path>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://mindsdbcommunity.slack.com/"
+                    target="_blank"
+                    title="Slack"
+                    rel="noreferrer noopener"
+                    class="home-link34"
+                  >
+                    <svg viewBox="0 0 1024 1024" class="home-icon86">
+                      <path
+                        d="M618.667 469.333c29.44 0 56.149-11.947 75.435-31.232s31.232-45.995 31.232-75.435v-213.333c0-29.44-11.947-56.149-31.232-75.435s-45.995-31.232-75.435-31.232-56.149 11.947-75.435 31.232-31.232 45.995-31.232 75.435v213.333c0 29.44 11.947 56.149 31.232 75.435s45.995 31.232 75.435 31.232zM618.667 384c-5.973 0-11.264-2.347-15.104-6.229s-6.229-9.131-6.229-15.104v-213.333c0-5.973 2.347-11.264 6.229-15.104s9.131-6.229 15.104-6.229 11.264 2.347 15.104 6.229 6.229 9.131 6.229 15.104v213.333c0 5.973-2.347 11.264-6.229 15.104s-9.131 6.229-15.104 6.229zM874.667 469.333c29.44 0 56.149-11.947 75.435-31.232s31.232-45.995 31.232-75.435-11.947-56.149-31.232-75.435-45.995-31.232-75.435-31.232-56.149 11.947-75.435 31.232-31.232 45.995-31.232 75.435v64c0 23.552 19.115 42.667 42.667 42.667zM874.667 384h-21.333v-21.333c0-5.973 2.347-11.264 6.229-15.104s9.131-6.229 15.104-6.229 11.264 2.347 15.104 6.229 6.229 9.131 6.229 15.104-2.347 11.264-6.229 15.104-9.131 6.229-15.104 6.229zM405.333 554.667c-29.44 0-56.149 11.947-75.435 31.232s-31.232 45.995-31.232 75.435v213.333c0 29.44 11.947 56.149 31.232 75.435s45.995 31.232 75.435 31.232 56.149-11.947 75.435-31.232 31.232-45.995 31.232-75.435v-213.333c0-29.44-11.947-56.149-31.232-75.435s-45.995-31.232-75.435-31.232zM405.333 640c5.973 0 11.264 2.347 15.104 6.229s6.229 9.131 6.229 15.104v213.333c0 5.973-2.347 11.264-6.229 15.104s-9.131 6.229-15.104 6.229-11.264-2.347-15.104-6.229-6.229-9.131-6.229-15.104v-213.333c0-5.973 2.347-11.264 6.229-15.104s9.131-6.229 15.104-6.229zM149.333 554.667c-29.44 0-56.149 11.947-75.435 31.232s-31.232 45.995-31.232 75.435 11.947 56.149 31.232 75.435 45.995 31.232 75.435 31.232 56.149-11.947 75.435-31.232 31.232-45.995 31.232-75.435v-64c0-23.552-19.115-42.667-42.667-42.667zM149.333 640h21.333v21.333c0 5.973-2.347 11.264-6.229 15.104s-9.131 6.229-15.104 6.229-11.264-2.347-15.104-6.229-6.229-9.131-6.229-15.104 2.347-11.264 6.229-15.104 9.131-6.229 15.104-6.229zM554.667 618.667c0 29.44 11.947 56.149 31.232 75.435s45.995 31.232 75.435 31.232h213.333c29.44 0 56.149-11.947 75.435-31.232s31.232-45.995 31.232-75.435-11.947-56.149-31.232-75.435-45.995-31.232-75.435-31.232h-213.333c-29.44 0-56.149 11.947-75.435 31.232s-31.232 45.995-31.232 75.435zM640 618.667c0-5.973 2.347-11.264 6.229-15.104s9.131-6.229 15.104-6.229h213.333c5.973 0 11.264 2.347 15.104 6.229s6.229 9.131 6.229 15.104-2.347 11.264-6.229 15.104-9.131 6.229-15.104 6.229h-213.333c-5.973 0-11.264-2.347-15.104-6.229s-6.229-9.131-6.229-15.104zM661.333 853.333c5.973 0 11.264 2.347 15.104 6.229s6.229 9.131 6.229 15.104-2.347 11.264-6.229 15.104-9.131 6.229-15.104 6.229-11.264-2.347-15.104-6.229-6.229-9.131-6.229-15.104v-21.333zM661.333 768h-64c-23.552 0-42.667 19.115-42.667 42.667v64c0 29.44 11.947 56.149 31.232 75.435s45.995 31.232 75.435 31.232 56.149-11.947 75.435-31.232 31.232-45.995 31.232-75.435-11.947-56.149-31.232-75.435-45.995-31.232-75.435-31.232zM384 405.333c0 5.973-2.347 11.264-6.229 15.104s-9.131 6.229-15.104 6.229h-213.333c-5.973 0-11.264-2.347-15.104-6.229s-6.229-9.131-6.229-15.104 2.347-11.264 6.229-15.104 9.131-6.229 15.104-6.229h213.333c5.973 0 11.264 2.347 15.104 6.229s6.229 9.131 6.229 15.104zM469.333 405.333c0-29.44-11.947-56.149-31.232-75.435s-45.995-31.232-75.435-31.232h-213.333c-29.44 0-56.149 11.947-75.435 31.232s-31.232 45.995-31.232 75.435 11.947 56.149 31.232 75.435 45.995 31.232 75.435 31.232h213.333c29.44 0 56.149-11.947 75.435-31.232s31.232-45.995 31.232-75.435zM362.667 170.667c-5.973 0-11.264-2.347-15.104-6.229s-6.229-9.131-6.229-15.104 2.347-11.264 6.229-15.104 9.131-6.229 15.104-6.229 11.264 2.347 15.104 6.229 6.229 9.131 6.229 15.104v21.333zM362.667 256h64c23.552 0 42.667-19.115 42.667-42.667v-64c0-29.44-11.947-56.149-31.232-75.435s-45.995-31.232-75.435-31.232-56.149 11.947-75.435 31.232-31.232 45.995-31.232 75.435 11.947 56.149 31.232 75.435 45.995 31.232 75.435 31.232z"
+                      ></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="home-copyright">
+            <span>©️ 2023 Made with 💚 by</span>
+            <a
+              href="https://twitter.com/RutamHere"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="home-link35"
+            >
+              Rutam
+            </a>
+            <span>. All Rights Reserved.</span>
+          </span>
+        </footer>
+      </div>
+    </div>
+    <script data-section-id="navbar" src="./scripts/nav.js"></script>
+    <script type="text/javascript" src="/scripts/summary.js"></script>
+    <script type="text/javascript" src="/scripts/sentiment.js"></script>
+    <script type="text/javascript" src="/scripts/mobilePrice.js"></script>
+    <script type="text/javascript" src="/scripts/teslaStock.js"></script>
+    <script type="text/javascript" src="/scripts/translations.js"></script>
+    <script type="text/javascript" src="/scripts/spam.js"></script>
+    <script type="text/javascript" src="/scripts/json.js"></script>
+    <script type="text/javascript" src="/scripts/qna.js"></script>
+    <script type="text/javascript" src="/scripts/eth.js"></script>
+    <script type="text/javascript" src="/scripts/water.js"></script>
+    <script type="text/javascript" src="/scripts/esg.js"></script>
+    <script type="text/javascript" src="/scripts/industry.js"></script>
+  </body>
+</html>
