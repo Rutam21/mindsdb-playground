@@ -37,7 +37,8 @@ async function analyzeSentiment(inputText, selectedEngine) {
 
   while (retries > 0) {
     try {
-      const text = `SELECT sentiment FROM ${sentimentModelName} WHERE text="${inputText}"`;
+      const escapedMessage = inputText.replace(/"/g, "");
+      const text = `SELECT sentiment FROM ${sentimentModelName} WHERE text="${escapedMessage}"`;
       const sentimentResponse = await MindsDB.SQL.runQuery(text);
       if (!sentimentResponse.rows) {
         throw new Error("Invalid response from MindsDB");
@@ -96,7 +97,8 @@ async function detectSpam(message, selectedEngine) {
 
   while (retries > 0) {
     try {
-      const text = `SELECT type FROM ${spamModelName} WHERE text="${message}"`; // use escaped message
+      const escapedMessage = message.replace(/"/g, "");
+      const text = `SELECT type FROM ${spamModelName} WHERE text="${escapedMessage}"`; // use escaped message
       const spamResponse = await MindsDB.SQL.runQuery(text);
       if (!spamResponse.rows) {
         throw new Error("Invalid response from MindsDB");
@@ -121,7 +123,8 @@ async function extractJson(message, selectedEngine) {
 
   while (retries > 0) {
     try {
-      const text = `SELECT json FROM ${jsonModelName} WHERE synopsis="${message}"`;
+      const escapedMessage = message.replace(/"/g, "");
+      const text = `SELECT json FROM ${jsonModelName} WHERE synopsis="${escapedMessage}"`;
       const jsonResponse = await MindsDB.SQL.runQuery(text);
       if (!jsonResponse.rows) {
         throw new Error("Invalid response from MindsDB");
@@ -146,7 +149,8 @@ async function fetchAnswers(message, selectedEngine) {
 
   while (retries > 0) {
     try {
-      const text = `SELECT answer FROM ${qnaModelName} WHERE question="${message}"`;
+      const escapedMessage = message.replace(/"/g, "");
+      const text = `SELECT answer FROM ${qnaModelName} WHERE question="${escapedMessage}"`;
       const qnaResponse = await MindsDB.SQL.runQuery(text);
       if (!qnaResponse.rows) {
         throw new Error("Invalid response from MindsDB");
@@ -171,7 +175,8 @@ async function determineESG(message, selectedEngine) {
 
   while (retries > 0) {
     try {
-      const text = `SELECT label FROM ${esgModelName} WHERE text="${message}"`;
+      const escapedMessage = message.replace(/"/g, "");
+      const text = `SELECT label FROM ${esgModelName} WHERE text="${escapedMessage}"`;
       const esgResponse = await MindsDB.SQL.runQuery(text);
       if (!esgResponse.rows) {
         throw new Error("Invalid response from MindsDB");
@@ -196,7 +201,8 @@ async function determineIndustry(message, selectedEngine) {
 
   while (retries > 0) {
     try {
-      const text = `SELECT label FROM ${industryModelName} WHERE text="${message}"`;
+      const escapedMessage = message.replace(/"/g, "");
+      const text = `SELECT label FROM ${industryModelName} WHERE text="${escapedMessage}"`;
       const industryResponse = await MindsDB.SQL.runQuery(text);
       if (!industryResponse.rows) {
         throw new Error("Invalid response from MindsDB");
@@ -218,7 +224,9 @@ async function handleMobilePrice(request) {
 
   while (retries > 0) {
     try {
-      const text = `Select Price from ${priceModelName} where Brand='${request.body.brand}' AND Model='${request.body.model}' AND Storage=${request.body.storage} AND RAM=${request.body.ram} AND ScreenSize=${request.body.screen} AND BatteryCapacity=${request.body.battery} AND Camera=${request.body.camera};`;
+      const brand = request.body.brand.replace(/"/g, "");
+      const model = request.body.model.replace(/"/g, "");
+      const text = `Select Price from ${priceModelName} where Brand="${brand}" AND Model="${model}" AND Storage=${request.body.storage} AND RAM=${request.body.ram} AND ScreenSize=${request.body.screen} AND BatteryCapacity=${request.body.battery} AND Camera=${request.body.camera};`;
       const priceResponse = await MindsDB.SQL.runQuery(text);
       if (!priceResponse.rows) {
         throw new Error("Invalid response from MindsDB");
@@ -323,7 +331,8 @@ async function translateText(inputText, selectedEngine, choice) {
 
   while (retries > 0) {
     try {
-      const text = `SELECT translation FROM ${translationModelName} WHERE text="${inputText}"`;
+      const escapedMessage = inputText.replace(/"/g, "");
+      const text = `SELECT translation FROM ${translationModelName} WHERE text="${escapedMessage}"`;
       const translationResponse = await MindsDB.SQL.runQuery(text);
       if (!translationResponse.rows) {
         throw new Error("Invalid response from MindsDB");

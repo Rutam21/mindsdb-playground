@@ -582,7 +582,10 @@
                 </p>
               </div>
             </div>
-            <form class="home-form" onsubmit="handleSummary(event)">
+            <form
+              class="home-form"
+              onsubmit="return checkFormInputs(this) && handleSummary(event)"
+            >
               <textarea
                 id="summaryInput"
                 resize="none !important"
@@ -661,7 +664,10 @@
                 </p>
               </div>
             </div>
-            <form class="home-form01" onsubmit="handleSentiment(event)">
+            <form
+              class="home-form01"
+              onsubmit="return checkFormInputs(this) && handleSentiment(event)"
+            >
               <textarea
                 id="sentimentInput"
                 required="true"
@@ -749,7 +755,10 @@
                 </p>
               </div>
             </div>
-            <form class="home-form02" onsubmit="handleTranslation(event)">
+            <form
+              class="home-form02"
+              onsubmit="return checkFormInputs(this) && handleTranslation(event)"
+            >
               <textarea
                 id="translationInput"
                 required="true"
@@ -842,7 +851,10 @@
                 </p>
               </div>
             </div>
-            <form class="home-form03" onsubmit="handleSpam(event)">
+            <form
+              class="home-form03"
+              onsubmit="return checkFormInputs(this) && handleSpam(event)"
+            >
               <textarea
                 id="spamInput"
                 required="true"
@@ -928,7 +940,10 @@
                 </p>
               </div>
             </div>
-            <form class="home-form04" onsubmit="handleJson(event)">
+            <form
+              class="home-form04"
+              onsubmit="return checkFormInputs(this) && handleJson(event)"
+            >
               <textarea
                 id="jsonInput"
                 resize="none"
@@ -998,7 +1013,10 @@
                 </p>
               </div>
             </div>
-            <form class="home-form05" onsubmit="handleQNA(event)">
+            <form
+              class="home-form05"
+              onsubmit="return checkFormInputs(this) && handleQNA(event)"
+            >
               <textarea
                 id="questionInput"
                 resize="none"
@@ -1076,7 +1094,10 @@
                 </p>
               </div>
             </div>
-            <form class="home-form04" onsubmit="handleEsg(event)">
+            <form
+              class="home-form04"
+              onsubmit="return checkFormInputs(this) && handleEsg(event)"
+            >
               <textarea
                 id="esgInput"
                 resize="none"
@@ -1146,7 +1167,10 @@
                 </p>
               </div>
             </div>
-            <form class="home-form05" onsubmit="handleIndustry(event)">
+            <form
+              class="home-form05"
+              onsubmit="return checkFormInputs(this) && handleIndustry(event)"
+            >
               <textarea
                 id="industryInput"
                 resize="none"
@@ -1232,7 +1256,10 @@
                 </p>
               </div>
             </div>
-            <form class="home-form06" onsubmit="handleMobilePrice(event)">
+            <form
+              class="home-form06"
+              onsubmit="return checkFormInputs(this) && handleMobilePrice(event)"
+            >
               <div class="home-container09">
                 <div class="home-container10">
                   <h1 class="home-text39">Brand</h1>
@@ -1286,6 +1313,7 @@
                     type="number"
                     id="screen"
                     required=""
+                    step="0.01"
                     placeholder="Enter the Screen Size"
                     class="home-textinput04 input"
                   />
@@ -1455,6 +1483,7 @@
                     type="number"
                     id="ph"
                     required=""
+                    step="0.01"
                     placeholder="Enter the pH Value"
                     class="home-textinput07 input"
                   />
@@ -1466,6 +1495,7 @@
                     type="number"
                     id="hardness"
                     required=""
+                    step="0.01"
                     placeholder="Enter the Hardness Value"
                     class="home-textinput08 input"
                   />
@@ -1476,6 +1506,7 @@
                     type="number"
                     id="solids"
                     required=""
+                    step="0.01"
                     placeholder="Enter the Solids Value"
                     class="home-textinput09 input"
                   />
@@ -1486,6 +1517,7 @@
                     type="number"
                     id="chloramines"
                     required=""
+                    step="0.01"
                     placeholder="Enter the Chloramines Value"
                     class="home-textinput10 input"
                   />
@@ -1496,6 +1528,7 @@
                     type="number"
                     id="sulfate"
                     required=""
+                    step="0.01"
                     placeholder="Enter the Sulfate Value"
                     class="home-textinput11 input"
                   />
@@ -1506,6 +1539,7 @@
                     type="number"
                     id="conductivity"
                     required=""
+                    step="0.01"
                     placeholder="Enter the Conductivity Value"
                     class="home-textinput12 input"
                   />
@@ -1516,6 +1550,7 @@
                     type="number"
                     id="carbon"
                     required=""
+                    step="0.01"
                     placeholder="Enter the Organic Carbon Value"
                     class="home-textinput13 input"
                   />
@@ -1526,6 +1561,7 @@
                     type="number"
                     id="trihalomethanes"
                     required=""
+                    step="0.01"
                     placeholder="Enter the Trihalomathanes Value"
                     class="home-textinput14 input"
                   />
@@ -1536,6 +1572,7 @@
                     type="number"
                     id="turbidity"
                     required=""
+                    step="0.01"
                     placeholder="Enter the Turbidity Value"
                     class="home-textinput15 input"
                   />
@@ -1756,5 +1793,6 @@
     <script type="text/javascript" src="/scripts/water.js"></script>
     <script type="text/javascript" src="/scripts/esg.js"></script>
     <script type="text/javascript" src="/scripts/industry.js"></script>
+    <script type="text/javascript" src="/scripts/common.js"></script>
   </body>
 </html>
