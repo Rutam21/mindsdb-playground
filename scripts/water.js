@@ -55,7 +55,7 @@ function handleWaterQuality(event) {
       .then((data) => {
         // Display the prediction
         if (!data.error) {
-          if (data.potability === "1.0" || data.potability === "1") {
+          if (data.potability === "1.0" || data.potability === 1) {
             resultDiv.innerHTML =
               "The Water is Potable. <br/><br/>" +
               "<b>Potability:</b> " +
