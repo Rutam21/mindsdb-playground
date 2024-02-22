@@ -1,6 +1,6 @@
 {
   "name": "mindsdb-playground",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "This is the project folder for MindsDB Playground App.",
   "main": "app.js",
   "scripts": {

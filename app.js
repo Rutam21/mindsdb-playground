@@ -12,7 +12,6 @@ app.use(bodyParser.json());
 
 // Serve the static files in public directory
 app.use(express.static("public"));
-app.use("/scripts", express.static(__dirname + "/scripts"));
 
 // Connect to MindsDB and start the server when connection is established
 mindsdb
